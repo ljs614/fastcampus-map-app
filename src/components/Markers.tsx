@@ -3,18 +3,18 @@ import { StoreType } from "@/interface";
 
 interface MarkersProps {
   map: any;
-  storeDatas: any[];
+  stores: any[];
   setCurrentStore: Dispatch<SetStateAction<any>>;
 }
 
 export default function Markers({
   map,
-  storeDatas,
+  stores,
   setCurrentStore,
 }: MarkersProps) {
   const loadKakaoMarkers = useCallback(() => {
     // 식당 데이터 마커
-    storeDatas?.map((store) => {
+    stores?.map((store) => {
       const imageSrc = `/images/markers/${
         store?.bizcnd_code_nm ? store?.bizcnd_code_nm : "default"
       }.png`;
@@ -62,7 +62,7 @@ export default function Markers({
         setCurrentStore(store);
       });
     });
-  }, [map, setCurrentStore, storeDatas]);
+  }, [map, setCurrentStore, stores]);
 
   useEffect(() => {
     if (map) {
