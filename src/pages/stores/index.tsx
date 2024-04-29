@@ -2,6 +2,7 @@ import { StoreType } from "@/interface";
 import Image from "next/image";
 
 export default function StoreListPage({ stores }: { stores: StoreType[] }) {
+  console.log(stores.length);
   return (
     <div className="px-4 md:max-w-4xl mx-auto py-8">
       <ul role="list" className="divide-y divide-gray-100">
