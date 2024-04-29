@@ -3,7 +3,7 @@ import { StoreType } from "@/interface";
 
 interface MarkersProps {
   map: any;
-  stores: any[];
+  stores: StoreType[];
   setCurrentStore: Dispatch<SetStateAction<any>>;
 }
 
@@ -16,7 +16,7 @@ export default function Markers({
     // 식당 데이터 마커
     stores?.map((store) => {
       const imageSrc = `/images/markers/${
-        store?.bizcnd_code_nm ? store?.bizcnd_code_nm : "default"
+        store?.category ? store?.category : "default"
       }.png`;
       const imageSize = new window.kakao.maps.Size(40, 40);
       const imageOptions = { offset: new window.kakao.maps.Point(27, 69) };
@@ -28,8 +28,8 @@ export default function Markers({
       );
 
       const markerPosition = new window.kakao.maps.LatLng(
-        store?.y_dnts,
-        store?.x_cnts
+        store?.lat,
+        store?.lng
       );
 
       const marker = new window.kakao.maps.Marker({
@@ -40,7 +40,7 @@ export default function Markers({
       marker.setMap(map);
 
       // 마커 커서 오버
-      const content = `<div class="infowindow">${store?.upso_nm}</div>`;
+      const content = `<div class="infowindow">${store?.name}</div>`;
 
       const customOverlay = new window.kakao.maps.CustomOverlay({
         position: markerPosition,
