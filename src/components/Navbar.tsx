@@ -1,10 +1,15 @@
 import { useState } from "react";
 import Link from "next/link";
+import { useSession, signOut } from "next-auth/react";
 import { BiMenu } from "react-icons/bi";
 import { BiX } from "react-icons/bi";
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
+  const { data, status } = useSession();
+
+  console.log(status);
+
   return (
     <>
       <div className="navbar">
@@ -21,9 +26,15 @@ export default function Navbar() {
           <Link href="/users/likes" className="navbar__list--item">
             찜한 가게
           </Link>
-          <Link href="/api/auth/signin" className="navbar__list--item">
-            로그인
-          </Link>
+          {status === "authenticated" ? (
+            <button type="button" onClick={() => signOut()}>
+              로그아웃
+            </button>
+          ) : (
+            <Link href="/api/auth/signin" className="navbar__list--item">
+              로그인
+            </Link>
+          )}
         </div>
         <div
           role="presentation"
