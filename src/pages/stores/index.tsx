@@ -1,9 +1,9 @@
 import Loading from "@/components/Loading";
-import Pagination from "@/components/Pagination";
+// import Pagination from "@/components/Pagination";
+import Pagination from "@/components/PaginationNew";
 import { StoreApiResponse } from "@/interface";
 import axios from "axios";
 import Image from "next/image";
-import Link from "next/link";
 import { useRouter } from "next/router";
 import { useQuery } from "react-query";
 
