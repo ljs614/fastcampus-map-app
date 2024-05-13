@@ -7,6 +7,7 @@ const DEFAULT_LNG = 126.984443;
 export const mapState = atom({
   key: "map",
   default: null,
+  dangerouslyAllowMutability: true,
 });
 
 export const currentStoreState = atom<StoreType | null>({
